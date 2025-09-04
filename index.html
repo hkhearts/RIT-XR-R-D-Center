@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIT XR R&D Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<style>
+  /* CSS Variables */
+    :root {
+      --primary: #2e4ead;
+      --primary-dark: #e3b462;
+      --secondary: #4e73df;
+      --accent: #ff6b6b;
+      --light: #f9f9f9;
+      --dark: #222;
+      --gray: #6c757d;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+      font-family: "Comic Neue", cursive;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Press Start 2P", system-ui;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2rem;
+      color: var(--primary);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: "Comic Neue", cursive;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      padding: 0.7rem 5%;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      font-family: "Press Start 2P", system-ui;
+    }
+
+    .logo i {
+      margin-right: 8px;
+      color: var(--primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-item {
+      margin: 0 1rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      font-family: "Comic Neue", cursive;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: var(--dark);
+      transition: var(--transition);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 80px;
+      background: linear-gradient(135deg, #eef2f3 0%, #dfe9f3 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(46, 78, 173, 0.05);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(46, 78, 173, 0.05);
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      color: var(--dark);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-img {
+      max-width: 100%;
+      border-radius: 20px;
+    }
+
+    /* About Section */
+    .about {
+      background: var(--white);
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .mission-list, .focus-list, .objectives-list {
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .mission-list li, .focus-list li, .objectives-list li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .mission-list li:before, .focus-list li:before, .objectives-list li:before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Equipment Section */
+    .equipment {
+      background: var(--light);
+    }
+
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 0;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card:hover::before {
+      height: 100%;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .card-content {
+      flex-grow: 1;
+    }
+
+    /* Projects Section */
+    .projects {
+      background: var(--white);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .project-details {
+      margin-bottom: 1rem;
+    }
+
+    .project-detail {
+      display: flex;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-detail strong {
+      min-width: 120px;
+      color: var(--primary);
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      background: var(--primary);
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .fan{
+        background: white;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .main-title {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Press Start 2P', monospace;
+        justify-content: center;
+        line-height: normal;
+        font-style: normal;
+        color: #3d76d4;
+        font-size: 200px;
+        text-align: center;
+        white-space: nowrap;
+        top: calc(50% - 172px);
+        left: calc(50% + 14px);
+        transform: translate(-50%, -50%);
+    }
+
+    .group-container {
+        position: absolute;
+        left: 0;
+        top: 191px;
+    }
+
+    .img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Timeline Section */
+    .timeline-section {
+      background: var(--light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+
+    .activity {
+      padding: 20px 40px;
+      position: relative;
+      width: 50%;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .activity.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .activity::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: var(--white);
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      top: 20px;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+      padding-right: 60px;
+    }
+
+    .right {
+      left: 50%;
+      padding-left: 60px;
+    }
+
+    .left::after {
+      right: -17px;
+    }
+
+    .right::after {
+      left: -17px;
+    }
+
+    .content {
+      padding: 25px;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .content:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .activity-type {
+      display: inline-block;
+      padding: 5px 15px;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .activity-details {
+      margin-bottom: 20px;
+    }
+
+    .detail-item {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      display: flex;
+    }
+
+    .detail-item strong {
+      color: var(--primary);
+      min-width: 120px;
+    }
+
+    /* Image Gallery Styles */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal for Fullscreen Images */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+    }
+
+    .modal-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.show .modal-img {
+      transform: scale(1);
+    }
+
+    .close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: var(--white);
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 2001;
+    }
+
+    .close:hover {
+      color: var(--accent);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .form-input, .form-textarea {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: "Comic Neue", cursive;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 78, 173, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--white);
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      
+      .hero-text {
+        max-width: 100%;
+      }
+      
+      .hero-image {
+        justify-content: center;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .timeline::before {
+        left: 31px;
+      }
+      
+      .activity {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .left, .right {
+        left: 0;
+        padding: 0 0 0 70px;
+      }
+      
+      .left::after, .right::after {
+        left: 18px;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .gallery img {
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        z-index: 101;
+      }
+      
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: none;
+        padding-top: 80px;
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .nav-item {
+        margin: 1.5rem 0;
+      }
+      
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .detail-item {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .detail-item strong {
+        min-width: auto;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fan {
+      background: white;
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-title {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Press Start 2P', monospace;
+      justify-content: center;
+      line-height: normal;
+      font-style: normal;
+      color: #3d76d4;
+      font-size: 200px;
+      text-align: center;
+      white-space: nowrap;
+      margin-bottom: 2rem;
+      z-index: 1;
+    }
+
+    .fan-image-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .fan-image-container img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @media (max-width: 1024px) {
+      .main-title {
+        font-size: 150px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 100px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .main-title {
+        font-size: 70px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .main-title {
+        font-size: 50px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        padding: 120px 5% 60px;
+      }
+      
+      .hero-title {
+        font-size: 1.5rem;
+      }
+      
+      .hero-description {
+        font-size: 1rem;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+      
+      .content h3 {
+        font-size: 1.1rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .gallery img {
+        height: 100px;
+      }
+      
+      .project-detail {
+        flex-direction: column;
+      }
+      
+      .project-detail strong {
+        min-width: auto;
+        margin-bottom: 5px;
+      }
+    }
+
+    .project-item {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    .project-details {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-detail {
+      display: flex;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .project-detail strong {
+      min-width: 120px;
+      color: var(--primary);
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: var(--primary);
+      color: var(--white);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 1.5rem;
+    }
+
+    .project-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid #ddd;
+    }
+
+    .project-gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .project-item {
+        padding: 1.5rem;
+      }
+      
+      .project-title {
+        font-size: 1.3rem;
+      }
+      
+      .project-detail {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .project-detail strong {
+        min-width: auto;
+      }
+      
+      .project-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .project-gallery img {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .project-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-gallery img {
+        height: auto;
+        max-height: 200px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-title {
+        font-size: 1.3rem;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+      }
+      
+      .activity {
+        padding-left: 50px;
+      }
+      
+      .left, .right {
+        padding-left: 50px;
+      }
+      
+      .left::after, .right::after {
+        left: 8px;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .gallery img {
+        height: 90px;
+      }
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+      :root {
+        --primary: #000080;
+        --primary-dark: #00005c;
+        --light: #ffffff;
+        --dark: #000000;
+      }
+      
+      .card {
+        border: 2px solid var(--dark);
+      }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      html {
+        scroll-behavior: auto;
+      }
+    }
+</style>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <i class="fas fa-vr-cardboard"></i>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="#equipment" class="nav-link">Equipment</a></li>
+      <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+      <li class="nav-item"><a href="#timeline" class="nav-link">Timeline</a></li>
+      <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
+  <br> <br>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">RIT XR R&D Center</h1>
+        <p class="hero-description">A pioneering hub dedicated to advancing knowledge, innovation, and applications in Extended Reality (XR) technologies, encompassing Virtual Reality (VR), Augmented Reality (AR), and Mixed Reality (MR).</p>
+        <a href="#about" class="btn">Learn More</a>
+      </div>
+      <div class="hero-image">
+        <img src="./img/Logo.png" alt="XR Lab" class="hero-img" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Fans -->
+  <section id="fans" class="fan">
+    <div class="main-title">
+      <p>XR</p>
+      <p>R&D</p>
+      <p>CENTER</p>
+    </div>
+
+    <div class="fan-image-container">
+      <img src="./img/Group 3 As.png" alt="XR Center Illustration" loading="lazy">
+    </div>
+
+    <script>
+      // JavaScript for Image Gallery Modal
+      const images = document.querySelectorAll('.gallery img');
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const closeBtn = document.querySelector('.close');
+
+      images.forEach(image => {
+        image.addEventListener('click', () => {
+          modal.style.display = 'flex';
+          modalImg.src = image.src;
+          modalImg.alt = image.alt;
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
+
+  </section>
+
+  <!-- Our Fans -->
+  <section id="fans" class="fan">
+    <div class="main-title">
+      <p>XR</p>
+      <p>R&D</p>
+      <p>CENTER</p>
+    </div>
+
+    <div class="fan-image-container">
+      <img src="./img/Group 6 RD.png" alt="XR Center Illustration" loading="lazy">
+    </div>
+
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">About RIT XR R&D Center</h2>
+      <div class="about-content">
+        <p class="about-text">
+          The Ramco Institute of Technology Extended Reality Research and Development Center (RIT XR R&D Center) is a pioneering hub dedicated to advancing knowledge, innovation, and applications in Extended Reality (XR) technologies, encompassing Virtual Reality (VR), Augmented Reality (AR), and Mixed Reality (MR).
+        </p>
+        <p class="about-text">
+          Established with a vision to bridge the gap between academic research and real-world industrial solutions, the center focuses on multidisciplinary exploration by integrating computer science, engineering, healthcare, education, and design to create impactful XR applications.
+        </p>
+        
+        <h3>Mission</h3>
+        <ul class="mission-list">
+          <li>To facilitate cutting-edge research in XR and its allied domains.</li>
+          <li>To develop XR-based solutions for healthcare, education, manufacturing, and mental health interventions.</li>
+          <li>To provide hands-on training and exposure for students, faculty, and researchers in emerging immersive technologies.</li>
+          <li>To collaborate with industries, startups, and academic institutions to build scalable XR innovations.</li>
+        </ul>
+        
+        <h3>Focus Areas</h3>
+        <ul class="focus-list">
+          <li>Immersive Learning & Training: Developing XR-based simulation environments for education, skill-building, and industrial training.</li>
+          <li>Healthcare & Mental Health: Exploring VR/MR-based solutions for diagnosis, therapy, and interventions, with a special focus on anxiety disorder research.</li>
+          <li>Human-Computer Interaction (HCI): Advancing intuitive interfaces that bridge the digital and physical worlds.</li>
+          <li>Smart Industry Applications: Implementing AR/MR solutions in manufacturing, design, and product development.</li>
+          <li>AI + XR Integration: Leveraging Artificial Intelligence to enhance adaptive and personalized XR experiences.</li>
+        </ul>
+        
+        <h3>Objectives</h3>
+        <ul class="objectives-list">
+          <li>To conduct research and develop XR solutions addressing real-time societal problems.</li>
+          <li>To establish connections with industries to facilitate mutual learning and offer consultancy services.</li>
+          <li>To secure Research & Development funding from government and private funding agencies for innovative projects.</li>
+          <li>To obtain Intellectual Property Rights (IPRs) for the solutions developed, ensuring global recognition.</li>
+          <li>To assist students in securing jobs in the XR industry by equipping them with relevant skills and experience.</li>
+          <li>To conduct workshops, seminars, and FDPs to disseminate XR knowledge.</li>
+          <li>To build an ecosystem that encourages student innovation, entrepreneurship, and collaborative projects.</li>
+        </ul>
+        
+        <h3>Vision</h3>
+        <p class="about-text">
+          To be a nationally recognized hub for XR research and innovation, driving the future of immersive technologies and transforming the way people learn, work, and heal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Section -->
+  <section id="equipment" class="section equipment">
+    <div class="container">
+      <h2 class="section-title">Our Equipment</h2>
+      <div class="equipment-grid">
+        <div class="card">
+          <h3 class="card-title">High-Performance Workstations</h3>
+          <div class="card-content">
+            <p>HP Z2 Tower G9 Workstations with Intel Core i7-14700K, 32GB RAM, and Windows 11 Pro for Unity, Unreal Engine, and Blender.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Meta Quest 3</h3>
+          <div class="card-content">
+            <p>4 VR headsets (128GB) for standalone and tethered XR experiences.</p>
+            <img src="./img/quest i.jpg" alt="Quest 3 i">
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Car Simulator</h3>
+          <div class="card-content">
+            <p>Playseat Gearshift Holder PRO, Logitech G29 Racing Wheel, and Driving Force Shifter for immersive simulations.</p>
+            <img src="./Car Sim/9.png" alt="Quest 3 i">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <h2 class="section-title">Our Projects</h2>
+      
+      <!-- Project 1 -->
+      <div class="project-item">
+        <h3 class="project-title">Car Sim</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong> Hari Krishnan, Darshan, Ram Kumar</div>
+          <div class="project-detail"><strong>Period:</strong> Jan 2025 - Mar 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> Immersive driving simulation for training and research</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Unity</span>
+          <span class="tech-tag">C#</span>
+          <span class="tech-tag">Logitech SDK</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./Car Sim/1.png" alt="Car Simulator Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/2.png" alt="Car Simulator Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/3.png" alt="Car Simulator Project 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/4.png" alt="Car Simulator Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/5.png" alt="Car Simulator Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/6.jpg" alt="Car Simulator Project 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/7.png" alt="Car Simulator Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/8.png" alt="Car Simulator Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/9.png" alt="Car Simulator Project 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Car Sim/10.png" alt="Car Simulator Project 3" loading="lazy" onclick="openModal(this)">
+        </div>
+      </div>
+      
+      <!-- Project 2 -->
+      <div class="project-item">
+        <h3 class="project-title">AR Applications (60 Scenes)</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong>AR Team</div>
+          <div class="project-detail"><strong>Period:</strong> Feb 2025 - Apr 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> Educational AR content for kindergarten books</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Unity</span>
+          <span class="tech-tag">Vuforia</span>
+          <span class="tech-tag">Android</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./Ar 60 Projects/1.png" alt="AR Applications Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/2.png" alt="AR Applications Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/3.png" alt="AR Applications Project 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/4.png" alt="AR Applications Project 4" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/5.png" alt="AR Applications Project 5" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/6.png" alt="AR Applications Project 6" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/7.png" alt="AR Applications Project 7" loading="lazy" onclick="openModal(this)">  
+          <img src="./Ar 60 Projects/8.png" alt="AR Applications Project 8" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/9.png" alt="AR Applications Project 9" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/10.png" alt="AR Applications Project 10" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/11.png" alt="AR Applications Project 11" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/12.png" alt="AR Applications Project 12" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/13.png" alt="AR Applications Project 13" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/14.png" alt="AR Applications Project 14" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/15.png" alt="AR Applications Project 15" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/16.png" alt="AR Applications Project 16" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/17.png" alt="AR Applications Project 17" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/18.png" alt="AR Applications Project 18" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/19.jpg" alt="AR Applications Project 19" loading="lazy" onclick="openModal(this)">
+          <img src="./Ar 60 Projects/20.jpg" alt="AR Applications Project 20" loading="lazy" onclick="openModal(this)">
+        </div>
+      </div>
+
+      <!-- Project 3
+      <div class="project-item">
+        <h3 class="project-title">Indoor Navigation</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong> AR Team</div>
+          <div class="project-detail"><strong>Period:</strong> Feb 2025 - Apr 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> Educational AR content for kindergarten books</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Unity</span>
+          <span class="tech-tag">Vuforia</span>
+          <span class="tech-tag">Android</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./pics/projects/ar-apps-1.jpg" alt="AR Applications Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./pics/projects/ar-apps-2.jpg" alt="AR Applications Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./pics/projects/ar-apps-3.jpg" alt="AR Applications Project 3" loading="lazy" onclick="openModal(this)">
+        </div>
+      </div> -->
+
+      <!-- Project 4 -->
+      <div class="project-item">
+        <h3 class="project-title">Blender Projects</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong>Jeyaseelan, Hari Krishnan</div>
+          <div class="project-detail"><strong>Period:</strong> 2024 - 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> 3D Models in Blender</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Blender</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./Blender Photos/IMG-20250226-WA0001.jpg" alt="AR Applications Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0002.jpg" alt="AR Applications Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0003.jpg" alt="AR Applications Project 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0004.jpg" alt="AR Applications Project 4" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0005.jpg" alt="AR Applications Project 5" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0006.jpg" alt="AR Applications Project 6" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0007.jpg" alt="AR Applications Project 8" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0008.jpg" alt="AR Applications Project 9" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0009.jpg" alt="AR Applications Project 10" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0010.jpg" alt="AR Applications Project 11" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0011.jpg" alt="AR Applications Project 12" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0012.jpg" alt="AR Applications Project 13" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0013.jpg" alt="AR Applications Project 14" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0014.jpg" alt="AR Applications Project 15" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0015.jpg" alt="AR Applications Project 16" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0016.jpg" alt="AR Applications Project 17" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0017.jpg" alt="AR Applications Project 18" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0018.jpg" alt="AR Applications Project 19" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0019.jpg" alt="AR Applications Project 20" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0020.jpg" alt="AR Applications Project 21" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0021.jpg" alt="AR Applications Project 22" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0022.jpg" alt="AR Applications Project 23" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0023.jpg" alt="AR Applications Project 24" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/IMG-20250903-WA0024.jpg" alt="AR Applications Project 25" loading="lazy" onclick="openModal(this)">
+          <img src="./Blender Photos/image 17.png" alt="AR Applications Project 26" loading="lazy" onclick="openModal(this)">
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-item">
+        <h3 class="project-title">Muscle AR</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong>Hari Krishnan</div>
+          <div class="project-detail"><strong>Period:</strong> 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> Full body Muscle System</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Blender</span>
+          <span class="tech-tag">Unity</span>
+          <span class="tech-tag">3D model</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./Muscele AR/0.png" alt="Muscle Ar Project 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Muscele AR/1.png" alt="Muscle Ar Project 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Muscele AR/2.png" alt="Muscle Ar Project 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Muscele AR/4.png" alt="Muscle Ar Project 5" loading="lazy" onclick="openModal(this)">
+          <img src="./Muscele AR/5.png" alt="Muscle Ar Project 6" loading="lazy" onclick="openModal(this)"
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-item">
+        <h3 class="project-title">Markerless AR</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong> Hari Krishnan</div>
+          <div class="project-detail"><strong>Period:</strong> 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> Ground Tracking without marker</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Unity</span>
+          <span class="tech-tag">Vuforia</span>
+          <span class="tech-tag">Android</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./Plane Track/6.png" alt="PlaneTracking 6" loading="lazy" onclick="openModal(this)">
+          <img src="./Plane Track/7.png" alt="PlaneTracking 7" loading="lazy" onclick="openModal(this)">
+          <img src="./Plane Track/1.png" alt="PlaneTracking 1" loading="lazy" onclick="openModal(this)">
+          <img src="./Plane Track/2.png" alt="PlaneTracking 2" loading="lazy" onclick="openModal(this)">
+          <img src="./Plane Track/3.png" alt="PlaneTracking 3" loading="lazy" onclick="openModal(this)">
+          <img src="./Plane Track/4.png" alt="PlaneTracking 4" loading="lazy" onclick="openModal(this)">
+          <img src="./Plane Track/5.png" alt="PlaneTracking 5" loading="lazy" onclick="openModal(this)">
+          
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-item">
+        <h3 class="project-title">Sketchup Models</h3>
+        <div class="project-details">
+          <div class="project-detail"><strong>Contributor:</strong>3D artists Team</div>
+          <div class="project-detail"><strong>Period:</strong> Jan 2025 - May 2025</div>
+          <div class="project-detail"><strong>Outcome:</strong> 3D Viewport of the Buildings</div>
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">3D</span>
+          <span class="tech-tag">SketchUp</span>
+        </div>
+        <div class="project-gallery">
+          <img src="./skp/GridArt_20250206_122149771 - PRAVEEN KUMAR R.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">
+          <img src="./skp/GridArt_20250206_122532103 - LAKSHITHA S.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">
+          <img src="./skp/GridArt_20250206_131621052 - JEYASEELAN S.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">
+          <img src="./skp/GridArt_20250206_153300968 - PANIMALAR N.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">
+          <img src="./skp/GridArt_20250206_192227345 - ANUKEERTHANA M.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">
+          <img src="./skp/GridArt_20250206_200843929 - JANANI SRI N S.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">
+          <img src="./skp/GridArt_20250206_210153851 - LALITH KRISHNA V M.jpg" alt="Skp 1" loading="lazy" onclick="openModal(this)">   
+        </div>
+      </div>
+      
+      
+      
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="section timeline-section">
+    <div class="container">
+      <h2 class="section-title">Lab Timeline</h2>
+      <div class="timeline">
+        <!-- Activity 1 -->
+        <div class="activity left">
+          <div class="content">
+            <h3>Marker Magic: Building AR Experiences</h3>
+            <span class="activity-type">Workshop</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Target Audience:</strong> RIT CSE 24 - 28</div>
+              <div class="detail-item"><strong>Members involved:</strong> Rajarajeswari P, AP/CSE</div>
+              <div class="detail-item"><strong>Date:</strong> 02.01.2025 - 03.01.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> Trained 65 students on building marker-based AR Android application</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/1/20250102_161705.jpg" alt="AR Workshop" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/1/IMG-20250102-WA0002.jpg" alt="Students learning AR" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/1/IMG-20250104-WA0002.jpg" alt="AR development" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 2 -->
+        <div class="activity right">
+          <div class="content">
+            <h3>VR Application Development</h3>
+            <span class="activity-type">Faculty Training Programme</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Location:</strong> SASTRA - MHI Training Centre, SASTRA University, Thanjavur</div>
+              <div class="detail-item"><strong>Members involved:</strong> Sakthi Priya G, AP/CSE, Rajarajeswari P, AP/CSE</div>
+              <div class="detail-item"><strong>Date:</strong> 06.01.2025 - 11.01.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> Two faculty members gained experience on building VR application using Meta Quest 2 and Unity 3D</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/2/20250107_112047.jpg" alt="VR Training" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/2/IMG-20250120-WA0000.jpg" alt="Meta Quest 2" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/2/IMG-20250120-WA0004.jpg" alt="Unity Development" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 3 -->
+        <div class="activity left">
+          <div class="content">
+            <h3>Augmented Reality in Action: Learn, Build, Innovate</h3>
+            <span class="activity-type">Value Added Course</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Target Audience:</strong> RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Members involved:</strong> Sakthi Priya G, AP/CSE, Rajarajeswari P, AP/CSE, Hari Krishnan C, RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 20.01.2025 - 01.02.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> Trained 106 students in developing marker-based AR applications for Android. This was followed by a hackathon where students developed around 60 AR applications centered on kindergarten book content.</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/3/20250201_113232.jpg" alt="AR Course" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/3/IMG-20250124-WA0001.jpg" alt="Students working" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/3/IMG-20250125-WA0005.jpg" alt="Hackathon" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/3/IMG-20250201-WA0010.jpg" alt="Hackathon" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 4 -->
+        <div class="activity right">
+          <div class="content">
+            <h3>National Science Day 2025</h3>
+            <span class="activity-type">Project Presentation</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Projects:</strong></div>
+              <div class="detail-item">- ShapesAR by KAVIYALAKSHMI J K, LAKSHITHA S RIT CSE 23 - 27</div>
+              <div class="detail-item">- ExtinctAnimalsGame AR by JEYASEELAN S, KARUPPASAMY A, DEEPAK LINGARAJ, ARJUN S RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 28.02.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> End user Android application</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/4/20250228_153434.jpg" alt="Science Day" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/4/20250228_153551.jpg" alt="Project Presentation" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 5 -->
+        <div class="activity left">
+          <div class="content">
+            <h3>AR Markers in Action: From Basics to Products</h3>
+            <span class="activity-type">Workshop</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Target Audience:</strong> All degree pursuing students</div>
+              <div class="detail-item"><strong>Members involved:</strong> Rajarajeswari P, AP/CSE, Hari Krishnan C, Ram Kumar N, Darshan Sivakumar, RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 01.03.2025</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/5/IMG-20250301-WA0023.jpg" alt="AR Workshop" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/5/IMG-20250301-WA0035.jpg" alt="Workshop Participants" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 6 -->
+        <div class="activity right">
+          <div class="content">
+            <h3>AR Applications - Paper Presentation</h3>
+            <span class="activity-type">Paper Presentation</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Event:</strong> Paper Way Galaxy - ELECXY 2K25, Kamaraj College of Engineering, Virudhunagar</div>
+              <div class="detail-item"><strong>Members involved:</strong> Sri Pon Mathu Swasthik, Harish Kumar, Siva, RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 06.03.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> First Prize with Cash Reward of Rs. 1000/-</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/6/IMG-20250306-WA0001.jpg" alt="Paper Presentation" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 7 -->
+        <div class="activity left">
+          <div class="content">
+            <h3>Augment Your Imagination: Build Your AR World</h3>
+            <span class="activity-type">Workshop</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Target Audience:</strong> High School Students</div>
+              <div class="detail-item"><strong>Members involved:</strong> Rajarajeswari P, AP/CSE Hari Krishnan C, Ram Kumar N, Darshan Sivakumar, Sri Pon Mathu Swasthik P, Kaviya Lakshmi JK, Jeyaseelan S RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 28.04.2025 - 29.04.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> Trained 45 school students on building marker-based AR Android application</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/7/WhatsApp Image 2025-04-28 at 3.34.09 PM.jpeg" alt="School Workshop" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/7/WhatsApp Image 2025-04-29 at 11.26.09 AM (1).jpeg" alt="Students Learning" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/7/WhatsApp Image 2025-04-30 at 10.04.00 AM.jpeg" alt="AR Projects" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 8 -->
+        <div class="activity right">
+          <div class="content">
+            <h3>Getting Started with Animation: Concepts and Tools</h3>
+            <span class="activity-type">Guest Lecture</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Expert Speaker:</strong> Mr. Bharathy C, Assistant Professor, School of Computing, Sastra University, Thanjavur, India.</div>
+              <div class="detail-item"><strong>Target Audience:</strong> RIT CSE 22 - 26 & RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Members involved:</strong> Rajarajeswari P, AP/CSE</div>
+              <div class="detail-item"><strong>Date:</strong> 07.05.2025 - 09.05.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> Twenty-six students got exposure to animations for VR development using Flash.</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/8/Screenshot (197).png" alt="Guest Lecture" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/8/Screenshot (198).png" alt="Animation Workshop" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/8/Screenshot (204).png" alt="VR Animation" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 9 -->
+        <div class="activity left">
+          <div class="content">
+            <h3>WebXR Internship Program</h3>
+            <span class="activity-type">Internship</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Organization:</strong> Damodar at KEYXR</div>
+              <div class="detail-item"><strong>Members involved:</strong> Rajarajeswari P, AP/CSE</div>
+              <div class="detail-item"><strong>Date:</strong> May - July 2025</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 10 -->
+        <div class="activity right">
+          <div class="content">
+            <h3>VR Application Development</h3>
+            <span class="activity-type">Training Programme</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Location:</strong> SASTRA - MHI Training Centre, SASTRA University, Thanjavur</div>
+              <div class="detail-item"><strong>Target Audience:</strong> RIT CSE 22 - 26 & RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 23.06.2025 - 28.06.2025</div>
+              <div class="detail-item"><strong>Outcome:</strong> Thirty students were given training on VR application development using Unity 3D and Meta Quest 2</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/10/IMG-20250708-WA0007.jpg" alt="Internship" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Activity 11 -->
+        <div class="activity left">
+          <div class="content">
+            <h3>VR Internship at Sri Sairam Techno Incubator Foundation</h3>
+            <span class="activity-type">Internship</span>
+            <div class="activity-details">
+              <div class="detail-item"><strong>Members involved:</strong> Hari Krishnan C, Anu Subiksha BG, Deepalakshmi RIT CSE 23 - 27</div>
+              <div class="detail-item"><strong>Date:</strong> 25.06.2025 - 25.07.2025</div>
+            </div>
+            <div class="gallery">
+              <img src="./pics/11/photo_1_2025-07-09_00-41-21.jpg" alt="Internship" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/11/photo_2_2025-07-09_00-41-21.jpg" alt="Internship" onclick="openModal(this)" loading="lazy">
+              <img src="./pics/11/photo_3_2025-07-09_00-41-21.jpg" alt="Internship" onclick="openModal(this)" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" id="name" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" id="email" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea id="message" class="form-textarea" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="logo">
+          <i class="fas fa-vr-cardboard"></i>
+          RIT XR R&D Center
+        </a>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p class="copyright">© 2025 RIT XR R&D Center | Driving the future of immersive technologies</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img class="modal-img" id="modalImage" alt="Modal Image">
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Navbar functionality
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const backToTop = document.querySelector('.back-to-top');
+    const activities = document.querySelectorAll('.activity');
+    
+    // Toggle mobile menu
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+    });
+    
+    // Close mobile menu when clicking on a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+        backToTop.classList.add('visible');
+      } else {
+        navbar.classList.remove('scrolled');
+        backToTop.classList.remove('visible');
+      }
+      
+      // Animate timeline items on scroll
+      animateOnScroll();
+    });
+    
+    // Back to top functionality
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Modal functionality for images
+    function openModal(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.classList.add('show');
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside the image
+    window.addEventListener('click', (event) => {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    // Animate timeline items on scroll
+    function animateOnScroll() {
+      const triggerBottom = window.innerHeight * 0.8;
+      
+      activities.forEach(activity => {
+        const activityTop = activity.getBoundingClientRect().top;
+        
+        if (activityTop < triggerBottom) {
+          activity.classList.add('visible');
+        }
+      });
+    }
+    
+    // Initialize animation on page load
+    window.addEventListener('load', () => {
+      animateOnScroll();
+    });
+    
+    // Form submission (prevent default for demo)
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! This is a demo form.');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XR R&D CENTER - Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .landing-page {
+            background: white;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-title {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Press Start 2P', monospace;
+            justify-content: center;
+            line-height: normal;
+            font-style: normal;
+            color: #3d76d4;
+            font-size: 200px;
+            text-align: center;
+            white-space: nowrap;
+            top: calc(50% - 172px);
+            left: calc(50% + 14px);
+            transform: translate(-50%, -50%);
+        }
+
+        .main-title p {
+            margin-bottom: 0;
+        }
+
+        .background-blur {
+            position: absolute;
+            filter: blur(0px);
+            height: 930px;
+            top: 94px;
+            width: 771px;
+            left: calc(50% + 213.5px);
+            transform: translateX(-50%);
+        }
+
+        .group-container {
+            position: absolute;
+            left: 0;
+            top: 191px;
+        }
+
+        .bg-image-left {
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: 103.33% 130.72%;
+            background-position: top right;
+            height: 759px;
+            left: 0;
+            top: 265px;
+            width: 720px;
+            background-image: url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=720&h=759&fit=crop');
+        }
+
+        .bg-image-right {
+            position: absolute;
+            background-position: 0% 9.89%;
+            background-repeat: no-repeat;
+            background-size: 100% 128.38%;
+            height: 650px;
+            left: 814px;
+            top: 374px;
+            width: 626px;
+            background-image: url('https://images.unsplash.com/photo-1592478411213-6153e4ebc696?w=626&h=650&fit=crop');
+        }
+
+        .bg-image-center {
+            position: absolute;
+            background-position: 50% 24.94%;
+            background-repeat: no-repeat;
+            background-size: 100.05% 146.7%;
+            height: 833px;
+            left: 50%;
+            top: 191px;
+            transform: translateX(-50%);
+            width: 916px;
+            background-image: url('https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=916&h=833&fit=crop');
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .main-title {
+                font-size: 120px;
+                top: calc(50% - 100px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 60px;
+                top: calc(50% - 50px);
+            }
+            
+            .bg-image-left,
+            .bg-image-right,
+            .bg-image-center {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 32px;
+                top: calc(50% - 30px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <!-- Main Title -->
+        <div class="main-title">
+            <p>XR</p>
+            <p>R&D</p>
+            <p>CENTER</p>
+        </div>
+
+        <!-- Background blur element -->
+        <div class="background-blur"></div>
+
+        <!-- Background Images Group -->
+        <div class="group-container">
+            <div class="bg-image-left"></div>
+            <div class="bg-image-right"></div>
+            <div class="bg-image-center"></div>
+        </div>
+    </div>
+</body>
+</html>
